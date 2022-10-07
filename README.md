@@ -10,7 +10,7 @@
 
 # Tool(s)
 
-Wireshark - https://www.wireshark.org/ ––– or any other similar tools
+Wireshark - https://www.wireshark.org/
 
 # Finding the Card
 
@@ -22,7 +22,15 @@ So, we need to decide the keys (filter) that we're going to use to narrow down o
 
 My initial thought is to search through `HTTP` traffic, which is an unencrypted communication protocol. This means, any text in an HTTP request or response are visible to anyone monitoring the traffic. 
 
-But, there are still quite plenty traffic to inspect. Let's narrow it down again. Since it's a message that leads the contract card, so it is likely that the http method used will be `POST`. Therefore, let's try `http.request.method==POST`
+<img src="img/try1.1.png" width="500">
+
+But, there are still quite plenty traffic to inspect.
+
+Let's narrow it down again. 
+
+Since it's a message that leads the contract card, so it is likely that the http method used will be `POST`. Therefore, let's try `http.request.method==POST`
+
+<img src="img/try1.2.png"  width="500">
 
 Well, there's nothing there.
 
@@ -33,22 +41,27 @@ A URL contains domain name. This domain name will be translated into IP Addresse
 
 So, let's try filtering using `DNS`.
 
-
+<img src="img/try2.1.png"  width="500" >
 
 There are still too much to see. We need to find another key to reduce the noise. 
 
-Back to the URL. The first part of it is the scheme, which indicates the protocol (the language that will be used to communicate between a client browser and the web server). HTTP and HTTPS are the most common ones. Since we've tried with the HTTP, now let's try the HTTPS.
+Back to the URL. The first part of a URL is the scheme, which indicates the protocol (the language that will be used to communicate between a client browser and the web server). HTTP and HTTPS are the most common ones. Since we've tried with the HTTP, now let's try the HTTPS.
 
 Combined the first key (DNS) and the second key (HTTPS), therefore we get: `dns contains "https"`
 
+<img src="img/try2.2.png"  width="500" >
 
+Here we traffic that contains a URL which leads to [Pastebin](https://pastebin.com/). Pastebin itself is an online clipboard to store text online. 
 
-Here we have a URL which leads to [Pastebin](https://pastebin.com/). Pastebin itself is an online clipboard to store text online. 
+<img src="img/try2.3.png"  width="500">
 
+Upon opening the Pastebin link, we can see a shortened URL. 
 
-The Pastebin contains a shortened URL. 
+<img src="img/try2.4.png"  width="500">
 
-This URL leads us to the contract card
+Let's try opening this URL. Turns out, this is indeed the URL leads us to the contract card
+
+<img src="img/try2.5.png" height="500">
 
 
 ## **MISSION ACCOMPLISHED!**

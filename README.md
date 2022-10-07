@@ -5,7 +5,7 @@
 
  The breach acquired data in the form of anonymous communication using a code name.
 
- Agent K is tasked with analyzing a packet capture file to find a message: **the contract card.**
+ Agent K is tasked with analyzing a packet capture file to find a message: **The contract card.**
 
 
 # Tool(s)

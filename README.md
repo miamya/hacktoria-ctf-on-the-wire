@@ -35,7 +35,7 @@ Since it's a message that leads the contract card, so it is likely that the http
 Well, there's nothing there.
 
 ## Second Approach
-Since the attempt with HTTP traffic resulted in nothing. Since the hint says to find a message that **leads** the contract card, my best guess that it should be a URL that **leads** our objective. 
+Since the attempt with HTTP traffic resulted in nothing, let's try a different approach. The hint says to find a message that **leads** the contract card, my best guess that it should be a URL that **leads** our objective. 
 
 A URL contains domain name. This domain name will be translated into IP Addresses by the `DNS`.
 
